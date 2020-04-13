@@ -1,0 +1,50 @@
+html{
+    font-size: 10px;
+    height: 100%;
+    width: 100%;
+  }
+
+  *{
+      box-sizing: border-box;
+      font-family: Helvetica;
+  }
+
+  #pageWrapper{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background:  #07689f;
+}
+
+#mainContainer{
+    border: solid 1px red;
+    height: 500px;
+    width: 500px;
+}
+
+#title{
+    border: solid 1px black;
+}
+
+#userInputs{
+    border: solid 1px red;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+#display{
+    border: solid 1px red;
+
+}
+
+#buttons{
+    border: solid 1px red;
+}
