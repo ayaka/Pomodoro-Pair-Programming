@@ -9,28 +9,29 @@ const resetBtn = document.getElementById("reset");
 // initialize
 let inSession = true;
 let paused = false;
-let sessionMinutes = sessionTime.value;
+let sessionMinutes = sessionTime.textContent;
 let sessionSeconds = 0;
-let breakMinutes = breakTime.value;
+let breakMinutes = breakTime.textContent;
 let breakSeconds = 0;
 
 function updateDisplay(minutes, seconds) {
   minutes = minutes < 10 ? "0" + minutes : minutes;
   seconds = seconds < 10 ? "0" + seconds : seconds;
   timer.textContent = `${minutes}:${seconds}`;
+  document.title = `${minutes}:${seconds}`;
 }
 
 function addMinute(element) {
-  let count = parseInt(element.value);
+  let count = parseInt(element.textContent);
   count++;
-  element.value = count;
+  element.textContent = count;
   element === sessionTime ? (sessionMinutes = count) : (breakMinutes = count);
 }
 
 function subtractMinute(element) {
-  let count = parseInt(element.value);
+  let count = parseInt(element.textContent);
   count--;
-  element.value = count;
+  element.textContent = count;
   element === sessionTime ? (sessionMinutes = count) : (breakMinutes = count);
 }
 
@@ -58,83 +59,56 @@ function manageControlBtns(enabled) {
   });
 }
 
-// // function to start timer countdown
-// function startTimer(duration) {
-//   let countdown = duration * 60;
-
-//   setInterval(function () {
-//     updateDisplay(parseInt(countdown / 60, 10), parseInt(countdown % 60, 10));
-//     if (paused) {
-//         console.log('paused activated');
-//         clearInterval();
-//       return;
-//     }
-
-//     if (--countdown < 0) {
-//       if (inSession) {
-//         countdown = breakMinutes * 60;
-//         inSession = false;
-//       } else {
-//         countdown = duration;
-//         inSession = true;
-//       }
-//     }
-//   }, 1000);
-// };
-
-let testVariable = setInterval(intervalTimer, 1000) 
-let countdown;
-
-function intervalTimer(countdown){
-    updateDisplay(parseInt(countdown / 60, 10), parseInt(countdown % 60, 10));
-      if (paused) {
-          console.log('paused activated');
-          clearInterval();
-        return;
-      }
-  
-      if (--countdown < 0) {
-        if (inSession) {
-          countdown = breakMinutes * 60;
-          inSession = false;
-        } else {
-          countdown = sessionMinutes;
-          inSession = true;
-        }
-      }
-}
-
-
-function myStopFunction() {
-    clearInterval(testVariable);
-  }
+let timerInterval;
 
 // function to start timer countdown
-function startTimer(duration) {
-    countdown = duration * 60;
-    testVariable;
-  };
+function startTimer() {
+ 
+    let value = timer.textContent.split('')    
+    let numArr = value.filter(num => num != ':')
+    let countdown = parseInt((numArr[0] + numArr[1]) *60) + parseInt(numArr[2] + numArr[3])
+    console.log(countdown);    
+  timerInterval = setInterval(function () {
+    
+    updateDisplay(parseInt(countdown / 60, 10), parseInt(countdown % 60, 10));
+    if (paused) {
+        console.log('paused activated');
+      return;
+    }
 
+    if (--countdown < 0) {
+      if (inSession) {
+        countdown = breakMinutes * 60;
+        inSession = false;
+      } else {
+        countdown = sessionMinutes * 60;
+        inSession = true;
+      }
+    }
+  }, 1000);
+};
 
 function timeIt() {
+  paused = false;
   manageControlBtns(false);
-  sessionMinutes = sessionTime.value;
   startBtn.removeEventListener("click", timeIt);
-  startTimer(sessionMinutes);
+  startTimer();
 };
 
 startBtn.addEventListener("click", timeIt);
 
 resetBtn.addEventListener("click", function () {
-  paused = true;
   manageControlBtns(true);
   startBtn.addEventListener("click", timeIt);
-  sessionMinutes = sessionTime.value;
+  sessionMinutes = sessionTime.textContent;
+  clearInterval(timerInterval);
   updateDisplay(sessionMinutes, sessionSeconds);
 
 });
 
 function pauseTimer(){
+  clearInterval(timerInterval);
+  startBtn.addEventListener('click', timeIt);
     if(paused === true){
         paused = false;
       }
@@ -144,14 +118,6 @@ function pauseTimer(){
 }
 
 pauseBtn.addEventListener("click", pauseTimer) 
-// {
-//   if(paused === true){
-//     paused = false;
-//   }
-//   else if (paused === false){
-//     paused = true;
-//   }
-// });
 
 manageControlBtns(true);
 

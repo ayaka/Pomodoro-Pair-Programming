@@ -20,31 +20,56 @@ html{
     bottom: 0;
     right: 0;
     overflow: auto;
-    background:  #07689f;
+    background:  #091540;
 }
 
 #mainContainer{
-    border: solid 1px red;
+    background-color: #7692ff;
+    border: solid 1px white;
     height: 500px;
     width: 500px;
+    border-radius: 4px;
 }
 
 #title{
-    border: solid 1px black;
+    height: 20%;
 }
 
 #userInputs{
-    border: solid 1px red;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
 
 #display{
-    border: solid 1px red;
+    display: flex;
+    color: black;
+    background-color: #abd2fa;
+    margin: 5px;
+    height: 30%;
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
 
+input{
+    width: 30px;
+}
+
+button{
+    border: none;
+    display: inline-block;
+    color: black;
+    background-color: white;
+    font-size: 14px;
+    padding: 5px;
+}
+
+button:hover{
+    /*box-shadow: */
 }
 
 #buttons{
-    border: solid 1px red;
+    height: 30%;
 }
