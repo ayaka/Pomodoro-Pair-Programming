@@ -50,8 +50,6 @@ function subtractMinuteBreak(e){
 }
 
 
-let d = new Date()
-
 //function to start timer countdown
 function startTimer(duration, timer) {
     let actualMinutes = duration * 60;
