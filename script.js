@@ -58,62 +58,100 @@ function manageControlBtns(enabled) {
   });
 }
 
-// function to start timer countdown
-function startTimer(duration) {
-  let countdown = duration * 60;
+// // function to start timer countdown
+// function startTimer(duration) {
+//   let countdown = duration * 60;
 
-  setInterval(function () {
+//   setInterval(function () {
+//     updateDisplay(parseInt(countdown / 60, 10), parseInt(countdown % 60, 10));
+//     if (paused) {
+//         console.log('paused activated');
+//         clearInterval();
+//       return;
+//     }
+
+//     if (--countdown < 0) {
+//       if (inSession) {
+//         countdown = breakMinutes * 60;
+//         inSession = false;
+//       } else {
+//         countdown = duration;
+//         inSession = true;
+//       }
+//     }
+//   }, 1000);
+// };
+
+let testVariable = setInterval(intervalTimer, 1000) 
+let countdown;
+
+function intervalTimer(countdown){
     updateDisplay(parseInt(countdown / 60, 10), parseInt(countdown % 60, 10));
-    if (paused) {
-      return;
-    }
-
-    if (--countdown < 0) {
-      if (inSession) {
-        countdown = breakMinutes * 60;
-        inSession = false;
-      } else {
-        countdown = duration;
-        inSession = true;
+      if (paused) {
+          console.log('paused activated');
+          clearInterval();
+        return;
       }
-    }
-  }, 1000);
+  
+      if (--countdown < 0) {
+        if (inSession) {
+          countdown = breakMinutes * 60;
+          inSession = false;
+        } else {
+          countdown = sessionMinutes;
+          inSession = true;
+        }
+      }
 }
 
-<<<<<<< HEAD
-//function to start timer countdown
-function startTimer(duration, timer) {
-    let actualMinutes = duration * 60;
-    var countdown = actualMinutes, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(countdown / 60, 10)
-        seconds = parseInt(countdown % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-=======
+function myStopFunction() {
+    clearInterval(testVariable);
+  }
+
+// function to start timer countdown
+function startTimer(duration) {
+    countdown = duration * 60;
+    testVariable;
+  };
+
+
 function timeIt() {
   manageControlBtns(false);
   sessionMinutes = sessionTime.value;
   startBtn.removeEventListener("click", timeIt);
   startTimer(sessionMinutes);
-}
->>>>>>> 75df8af594f8a586308e493b516a5327a2e44fd2
+};
 
 startBtn.addEventListener("click", timeIt);
 
 resetBtn.addEventListener("click", function () {
+  paused = true;
   manageControlBtns(true);
+  startBtn.addEventListener("click", timeIt);
+  sessionMinutes = sessionTime.value;
+  updateDisplay(sessionMinutes, sessionSeconds);
+
 });
 
-pauseBtn.addEventListener("click", function () {
-  if(paused === true){
-    paused = false;
-  }
-  else (paused === false){
-    paused = true;
-  }
-});
+function pauseTimer(){
+    if(paused === true){
+        paused = false;
+      }
+      else if (paused === false){
+        paused = true;
+      }
+}
+
+pauseBtn.addEventListener("click", pauseTimer) 
+// {
+//   if(paused === true){
+//     paused = false;
+//   }
+//   else if (paused === false){
+//     paused = true;
+//   }
+// });
 
 manageControlBtns(true);
 
