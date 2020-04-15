@@ -2,11 +2,27 @@ html{
     font-size: 10px;
     height: 100%;
     width: 100%;
+    text-align: center;
   }
 
   *{
       box-sizing: border-box;
       font-family: Helvetica;
+  }
+
+  body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none; /* no underline */
+  }
+  a:hover{
+      color: blue;
+      text-decoration: underline;
   }
 
   #pageWrapper{
@@ -20,56 +36,117 @@ html{
     bottom: 0;
     right: 0;
     overflow: auto;
-    background:  #091540;
+    background:  #a8e6cf;
 }
 
 #mainContainer{
-    background-color: #7692ff;
-    border: solid 1px white;
+    background-color: #dcedc1;
     height: 500px;
-    width: 500px;
-    border-radius: 4px;
+    width: 450px;
+    box-shadow: 5px 9px 7px 0px rgba(0,0,0,0.67);  
+    border-radius: 6px;
 }
 
 #title{
     height: 20%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
 }
 
 #userInputs{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+    height: 20%;
+}
+
+.session, .break{
+    display: grid;
+}
+
+.session-container, .break-container{
+    display: grid;
+    margin: 5px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.session-time, .break-time{
+   font-size: 24px;
+   align-self: center;
+   }
+
+   .time-control{
+       font-size: 20px;
+       font-weight: bold;
+   }
+
+   .timerActive{
+       color: green
+   }
+
+   .breakActive{
+    color: red;
+}
+
+   #display{
+    display: flex;
+    color: black;
+    margin: 0 auto;
+    background-color: #ffd3b6;
+    font-size: 34px;
+    text-align: center;
+    align-content: center;  
+    align-items: center;
+    justify-content: center;
+    height: 25%;
+    width: 50%;
+    border-radius: 50%;
 }
 
 
-#display{
-    display: flex;
+button{
+    text-decoration: none;
+    border: none;
+    display: inline-block;
     color: black;
-    background-color: #abd2fa;
-    margin: 5px;
+    background-color: #ffaaa5;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+button:hover{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2)
+}
+
+#buttons{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat((2, 1fr));
+    padding: 5px;
+    grid-gap: 10px;
     height: 30%;
-    font-size: 18px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
 }
 
 input{
     width: 30px;
 }
 
-button{
-    border: none;
-    display: inline-block;
+#footer{
+    width: 100%;
     color: black;
-    background-color: white;
-    font-size: 14px;
-    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    font-size: small;
 }
 
-button:hover{
-    /*box-shadow: */
+#shortBreak{
+    grid-column: 1/2;
 }
 
-#buttons{
-    height: 30%;
+#longBreak{
+    grid-column: 3/4;
 }
