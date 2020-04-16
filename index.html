@@ -1,60 +1,64 @@
 <!DOCTYPE html>
-    <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
     <title>Pomodoro Timer</title>
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="pageWrapper">
+      <div id="mainContainer">
+        <div id="title">
+          <h1>Pomodoro Timer</h1>
+        </div>
 
-</head>
-<body>
- 
+        <div id="userInputs">
+          <div class="session">
+            <h2 class="session-header">Set Session Time</h2>
+            <div class="session-container">
+              <button class="up-session time-control">&#11014</button>
+              <span type="text" class="session-time" value="25">25</span>
+              <button class="down-session time-control">&#11015</button>
+            </div>
+          </div>
 
- <div id='pageWrapper'>
+          <div class="break">
+            <h2 class="break-header">Set Break Time</h2>
+            <div class="break-container">
+              <button class= "up-break time-control">&#11014</button>
+              <span type="text" class="break-time" value="5">5</span>
+              <button class= "down-break time-control">&#11015</button>
+            </div>
+          </div>
+        </div>
 
-<div id='mainContainer'>
+        <div id="display">
+          <h1 class="timer">
+            <span class="display-minutes">25</span>:<span
+              class="display-seconds"
+              >00</span
+            >
+          </h1>
+        </div>
 
-<div id='title'>
-  <h1>Pomodoro Timer</h1>
-</div>
-
-<div id='userInputs'>
-  <div class="session">
-    <h2 class="session-header">Session</h2>
-    <div class="session-container">
-      <button class="up-session time-control">up</button>
-      <span type="text" class="session-time" value="25">25</span>
-      <button class="down-session time-control">down</button>
+        <div id="buttons">
+          <button id="start" class="controls">Start</button>
+          <button id="pause" class="controls">Pause</button>
+          <button id="reset" class="controls">Reset</button>
+          <button id="shortBreak" class="controls">Take 5 Min Break?</button>
+          <button id="longBreak" class="controls">Take 15 Min Break?</button>
+        </div>
+      </div>
+      <div id="footer">
+        <p>
+          Pomodoro Timer created by Saul Belisle
+          <a href="https://github.com/iStayGrizzly">[Github]</a>
+          and threeaces
+          <a href="https://github.com/threeaces">[Github]</a>.
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="break">
-    <h2 class="break-header">Break</h2>
-    <div class="break-container">
-      <button class= "up-break time-control">up</button>
-      <span type="text" class="break-time" value="5">5</span>
-      <button class= "down-break time-control">down</button>
-    </div>
-  </div>
-</div>
 
-<div id='display'>
-  <!-- !!!!!!! -->
-  <h1 class="timer"><span class="display-minutes">25</span>:<span class="display-seconds">00</span></h1>
-
-</div>
-
-<div id='buttons'>
-    <button id='start' class ='controls'> Start </button>
-    <button id='pause' class ='controls'> Pause </button>
-    <button id='reset' class ='controls'> Reset </button>
-</div>
-
-</div>
-</div>
-
- </div>
- <script src="app.js"></script>
-<!-- <script type="text/javascript" src="script.js"></script> -->
-</body>
-
+    <script type="text/javascript" src="script.js"></script>
+  </body>
 </html>
